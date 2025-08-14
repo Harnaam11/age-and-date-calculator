@@ -1,0 +1,19 @@
+.app {
+  text-align: center;
+  padding: 20px;
+}
+
+input {
+  padding: 10px;
+  margin: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+p {
+  font-size: 18px;
+  margin-top: 20px;
+}
