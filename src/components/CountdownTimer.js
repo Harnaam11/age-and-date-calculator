@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaClock } from 'react-icons/fa';
 
 function CountdownTimer() {
   const [targetDate, setTargetDate] = useState('');
@@ -7,7 +8,6 @@ function CountdownTimer() {
   useEffect(() => {
     const interval = setInterval(() => {
       if (!targetDate) return;
-
       const now = new Date();
       const future = new Date(targetDate);
       const diff = future - now;
@@ -28,15 +28,20 @@ function CountdownTimer() {
     return () => clearInterval(interval);
   }, [targetDate]);
 
+  const reset = () => {
+    setTargetDate('');
+    setTimeLeft('');
+  };
+
   return (
-    <div style={{ margin: '20px', padding: '20px', border: '2px solid skyblue', borderRadius: '10px', backgroundColor: '#ffe6f0' }}>
-      <h2>Countdown Timer</h2>
-      <input
-        type="datetime-local"
-        value={targetDate}
-        onChange={(e) => setTargetDate(e.target.value)}
-        style={{ padding: '5px', marginBottom: '10px' }}
-      />
+    <div className="card" style={{ backgroundColor: '#ffe6f0' }}>
+      <h2><FaClock /> Countdown Timer</h2>
+      <p>Pick a future date and time to countdown.</p>
+      <input type="datetime-local" value={targetDate} onChange={e => setTargetDate(e.target.value)} />
+      <div>
+        <button onClick={() => setTimeLeft('Calculating...')}>Start</button>
+        <button onClick={reset} style={{ marginLeft: '10px' }}>Reset</button>
+      </div>
       <p>{timeLeft}</p>
     </div>
   );
