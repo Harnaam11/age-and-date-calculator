@@ -1,16 +1,20 @@
 import React from 'react';
 import './App.css';
-import CountdownTimer from './CountdownTimer';
-import DateDifference from './DateDifference';
+import AgeCalculator from './components/AgeCalculator';
+import CountdownTimer from './components/CountdownTimer';
+import DateDifference from './components/DateDifference';
 
 function App() {
   return (
-    <div style={{ textAlign: 'center', marginTop: '20px', fontFamily: 'Arial, sans-serif' }}>
+    <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom right, #fce4ec, #e0f7fa)' }}>
       <h1 style={{ color: 'skyblue' }}>Age & Date Calculator</h1>
-      <p style={{ color: 'pink' }}>Welcome! Your app is running.</p>
-      
-      <CountdownTimer />
-      <DateDifference />
+      <p style={{ color: 'pink', marginBottom: '30px' }}>All-in-one app: Age, Countdown & Date Difference</p>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
+        <AgeCalculator />
+        <CountdownTimer />
+        <DateDifference />
+      </div>
     </div>
   );
 }
