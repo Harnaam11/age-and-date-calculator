@@ -1,19 +1,41 @@
-.app {
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #a0e7ff, #ffb6c1);
+}
+
+.app-container {
   text-align: center;
-  padding: 20px;
+  padding: 50px;
+  color: #333;
 }
 
-input {
+.date-input {
   padding: 10px;
-  margin: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid #fff;
+  margin-top: 10px;
 }
 
-button {
+.calculate-button {
   padding: 10px 20px;
+  margin-left: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffb6c1;
+  color: white;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-p {
-  font-size: 18px;
-  margin-top: 20px;
+.calculate-button:hover {
+  background-color: #ff8fa3;
+}
+
+.result {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: bold;
 }
