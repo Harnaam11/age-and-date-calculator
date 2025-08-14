@@ -1,41 +1,28 @@
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #a0e7ff, #ffb6c1);
-}
-
-.app-container {
+.card {
+  width: 350px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   text-align: center;
-  padding: 50px;
-  color: #333;
 }
 
-.date-input {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 2px solid #fff;
-  margin-top: 10px;
+input {
+  margin: 5px;
+  padding: 5px;
+  width: 80%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
-.calculate-button {
-  padding: 10px 20px;
-  margin-left: 10px;
-  font-size: 16px;
+button {
+  padding: 7px 12px;
   border: none;
-  border-radius: 8px;
-  background-color: #ffb6c1;
-  color: white;
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  background-color: skyblue;
+  color: white;
 }
 
-.calculate-button:hover {
-  background-color: #ff8fa3;
-}
-
-.result {
-  margin-top: 30px;
-  font-size: 20px;
-  font-weight: bold;
+button:hover {
+  background-color: deepskyblue;
 }
