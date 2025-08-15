@@ -14,22 +14,10 @@ function App() {
         All-in-one app: Age, Countdown & Date Difference
       </p>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
-        {/* Section headings for SEO */}
-        <section style={{ width: '100%' }}>
-          <h2>Age Calculator</h2>
-          <AgeCalculator />
-        </section>
-
-        <section style={{ width: '100%' }}>
-          <h2>Countdown Timer</h2>
-          <CountdownTimer />
-        </section>
-
-        <section style={{ width: '100%' }}>
-          <h2>Date Difference Calculator</h2>
-          <DateDifference />
-        </section>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' }}>
+        <AgeCalculator />
+        <CountdownTimer />
+        <DateDifference />
       </div>
     </div>
   );
