@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://age-and-date-calculator-td7u.vercel.app/sitemap.xml
