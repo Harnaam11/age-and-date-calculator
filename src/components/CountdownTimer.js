@@ -1,78 +1,58 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { FaClock } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import { Card, CardContent } from "@/components/ui/card";
 
-function CountdownTimer() {
-  const [targetDate, setTargetDate] = useState('');
-  const [timeLeft, setTimeLeft] = useState('');
-  const [isRunning, setIsRunning] = useState(false);
-  const tickAudio = useRef(null);
+const CountdownTimer = () => {
+  const [timeLeft, setTimeLeft] = useState({});
+  const [targetDate, setTargetDate] = useState("");
 
   useEffect(() => {
-    if (!isRunning) return; // Don't run until Start is clicked
+    if (!targetDate) return;
 
     const interval = setInterval(() => {
-      if (!targetDate) return;
+      const now = new Date().getTime();
+      const distance = new Date(targetDate).getTime() - now;
 
-      const now = new Date();
-      const future = new Date(targetDate);
-      const diff = future - now;
-
-      if (diff <= 0) {
-        setTimeLeft("Time's up!");
-        setIsRunning(false);
-        return;
+      if (distance <= 0) {
+        clearInterval(interval);
+        setTimeLeft({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        });
+      } else {
+        setTimeLeft({
+          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((distance % (1000 * 60)) / 1000),
+        });
       }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      setTimeLeft(`${days}d ${hours}h ${minutes}m ${seconds}s`);
-
-      // Play tick sound
-      if (tickAudio.current) {
-        tickAudio.current.currentTime = 0;
-        tickAudio.current.play().catch(() => {});
-      }
-
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [targetDate, isRunning]);
-
-  const startCountdown = () => {
-    if (targetDate) {
-      setIsRunning(true);
-      setTimeLeft('Calculating...');
-    }
-  };
-
-  const reset = () => {
-    setTargetDate('');
-    setTimeLeft('');
-    setIsRunning(false);
-  };
+  }, [targetDate]);
 
   return (
-    <div className="card countdown" style={{ backgroundColor: '#ffe6f0' }}>
-      <h2 style={{ color: 'black' }}><FaClock /> Countdown Timer</h2>
-      <p style={{ color: 'black' }}>Pick a future date and time to countdown.</p>
-      <input
-        type="datetime-local"
-        value={targetDate}
-        onChange={e => setTargetDate(e.target.value)}
-      />
-      <div>
-        <button onClick={startCountdown}>Start</button>
-        <button onClick={reset} style={{ marginLeft: '10px' }}>Reset</button>
-      </div>
-      {timeLeft && <p><strong>Time Left:</strong> {timeLeft}</p>}
+    <Card className="w-full max-w-md mx-auto p-4 shadow-lg">
+      <CardContent className="text-center space-y-4">
+        {/* Title inside the box */}
+        <h2 className="text-xl font-bold">Countdown Timer</h2>
 
-      {/* Tick sound audio */}
-      <audio ref={tickAudio} src="https://www.soundjay.com/clock/sounds/clock-tick-1.mp3" />
-    </div>
+        <input
+          type="datetime-local"
+          onChange={(e) => setTargetDate(e.target.value)}
+          className="border p-2 rounded w-full"
+        />
+
+        {targetDate && (
+          <div className="text-lg font-mono">
+            {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+          </div>
+        )}
+      </CardContent>
+    </Card>
   );
-}
+};
 
 export default CountdownTimer;
