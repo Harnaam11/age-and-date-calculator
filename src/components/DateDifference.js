@@ -23,15 +23,26 @@ function DateDifference() {
 
   return (
     <div className="card" style={{ backgroundColor: '#e0f7ff' }}>
-      <h2><FaCalendarAlt /> Date Difference</h2>
-      <p>Enter two dates to find the difference in days.</p>
-      <input type="date" value={date1} onChange={e => setDate1(e.target.value)} />
-      <input type="date" value={date2} onChange={e => setDate2(e.target.value)} />
+      <h2 style={{ color: 'black' }}><FaCalendarAlt /> Date Difference Calculator</h2>
+      <p style={{ color: 'black' }}>Enter two dates to find the difference in days.</p>
+
+      <input 
+        type="date" 
+        value={date1} 
+        onChange={e => setDate1(e.target.value)} 
+      />
+      <input 
+        type="date" 
+        value={date2} 
+        onChange={e => setDate2(e.target.value)} 
+      />
+
       <div>
         <button onClick={calculateDifference}>Calculate</button>
         <button onClick={reset} style={{ marginLeft: '10px' }}>Reset</button>
       </div>
-      <p>{difference}</p>
+
+      {difference && <p><strong>Difference:</strong> {difference}</p>}
     </div>
   );
 }
