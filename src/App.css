@@ -1,103 +1,53 @@
-/* General app background */
-body {
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(to right, #e0f7fa, #ffe0f0);
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 40px;
-  margin: 0;
-}
-
-/* Card styling */
-.card {
-  width: 350px;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+/* General app container */
+.app-container {
   text-align: center;
-  transition: all 0.3s ease;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
 }
 
-/* Alternating card colors */
-.card.age {
-  background-color: #f0f8ff; /* light sky blue */
-}
-
-.card.countdown {
-  background-color: #ffe4e1; /* light pink */
-}
-
-.card.datediff {
-  background-color: #ffffff; /* white */
-}
-
-/* Card hover effect */
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-}
-
-/* Title with icon */
-.card h2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-}
-
-/* Input fields */
-input {
-  margin: 5px;
-  padding: 8px;
-  width: 80%;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-/* Buttons */
-button {
-  padding: 8px 15px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: skyblue;
-  color: white;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-/* Button hover shade effect */
-button:hover {
-  background-color: deepskyblue;
-  transform: scale(1.05);
-}
-
-/* Result text styling */
-.result {
-  margin-top: 15px;
-  font-size: 1.2rem;
-  font-weight: bold;
+/* Title */
+.title {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
   color: #333;
 }
 
-/* Reset button smaller style */
-.reset-btn {
-  background-color: lightcoral;
+/* Tab buttons container */
+.tab-buttons {
+  margin-bottom: 20px;
 }
 
-.reset-btn:hover {
-  background-color: crimson;
+/* Buttons */
+.tab-buttons button {
+  padding: 12px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4cafef;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tab-buttons button:hover {
+  background-color: #357ec7;
   transform: scale(1.05);
 }
 
-/* Optional subtle icon colors */
-.icon {
-  font-size: 1.5rem;
-  color: #ff69b4; /* pinkish for fun */
+/* Active tab */
+.tab-buttons button.active {
+  background-color: #2b65ec;
+}
+
+/* Content area */
+.tab-content {
+  margin-top: 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
