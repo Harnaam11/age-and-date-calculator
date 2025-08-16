@@ -1,23 +1,32 @@
-import React from 'react';
-import './App.css';
-import AgeCalculator from './components/AgeCalculator';
-import CountdownTimer from './components/CountdownTimer';
-import DateDifference from './components/DateDifference';
+import React, { useState } from "react";
+import CountdownTimer from "./CountdownTimer";
+import DateDifference from "./DateDifference";
+import "./App.css";
 
 function App() {
-  return (
-    <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom right, #fce4ec, #e0f7fa)' }}>
-      {/* Main SEO heading */}
-      <h1 style={{ color: 'skyblue' }}>Age & Date Calculator – Free Online Tool</h1>
-      {/* Subtitle */}
-      <p style={{ color: 'black', marginBottom: '30px' }}>
-        All-in-one app: Age, Countdown & Date Difference
-      </p>
+  const [activeTab, setActiveTab] = useState("countdown");
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' }}>
-        <AgeCalculator />
-        <CountdownTimer />
-        <DateDifference />
+  return (
+    <div className="app-container">
+      <h1 className="title">Date Tools</h1>
+      <div className="tab-buttons">
+        <button
+          className={activeTab === "countdown" ? "active" : ""}
+          onClick={() => setActiveTab("countdown")}
+        >
+          Countdown Timer
+        </button>
+        <button
+          className={activeTab === "difference" ? "active" : ""}
+          onClick={() => setActiveTab("difference")}
+        >
+          Date Difference
+        </button>
+      </div>
+
+      <div className="tab-content">
+        {activeTab === "countdown" && <CountdownTimer />}
+        {activeTab === "difference" && <DateDifference />}
       </div>
     </div>
   );
