@@ -4,29 +4,28 @@ import DateDifference from "./DateDifference";
 import "./App.css";
 
 function App() {
-  const [activeTab, setActiveTab] = useState("countdown");
+  const [activeComponent, setActiveComponent] = useState("countdown");
 
   return (
-    <div className="app-container">
-      <h1 className="title">Date Tools</h1>
-      <div className="tab-buttons">
+    <div className="app">
+      <h1 className="app-title">Time Tools</h1>
+      <div className="button-container">
         <button
-          className={activeTab === "countdown" ? "active" : ""}
-          onClick={() => setActiveTab("countdown")}
+          className={`toggle-btn ${activeComponent === "countdown" ? "active" : ""}`}
+          onClick={() => setActiveComponent("countdown")}
         >
           Countdown Timer
         </button>
         <button
-          className={activeTab === "difference" ? "active" : ""}
-          onClick={() => setActiveTab("difference")}
+          className={`toggle-btn ${activeComponent === "difference" ? "active" : ""}`}
+          onClick={() => setActiveComponent("difference")}
         >
           Date Difference
         </button>
       </div>
 
-      <div className="tab-content">
-        {activeTab === "countdown" && <CountdownTimer />}
-        {activeTab === "difference" && <DateDifference />}
+      <div className="content">
+        {activeComponent === "countdown" ? <CountdownTimer /> : <DateDifference />}
       </div>
     </div>
   );
