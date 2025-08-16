@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaBirthdayCake } from 'react-icons/fa'; // install react-icons if not installed
+import { FaBirthdayCake } from 'react-icons/fa';
 
 function AgeCalculator() {
   const [dob, setDob] = useState('');
@@ -23,15 +23,19 @@ function AgeCalculator() {
   };
 
   return (
-    <div className="card" style={{ backgroundColor: 'white' }}>
-      <h2><FaBirthdayCake /> Age Calculator</h2>
-      <p>Enter your birth date to calculate your age.</p>
-      <input type="date" value={dob} onChange={e => setDob(e.target.value)} />
+    <div className="card" style={{ backgroundColor: '#ffe6f0' }}>
+      <h2 style={{ color: 'black', marginBottom: '10px' }}><FaBirthdayCake /> Age Calculator</h2>
+      <input 
+        type="date" 
+        value={dob} 
+        onChange={e => setDob(e.target.value)} 
+        style={{ display: 'block', margin: '10px auto', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}
+      />
       <div>
-        <button onClick={calculateAge}>Calculate</button>
-        <button onClick={reset} style={{ marginLeft: '10px' }}>Reset</button>
+        <button onClick={calculateAge} className="btn">Calculate</button>
+        <button onClick={reset} style={{ marginLeft: '10px' }} className="btn">Reset</button>
       </div>
-      <p>{age}</p>
+      <p style={{ marginTop: '10px', fontWeight: 'bold' }}>{age}</p>
     </div>
   );
 }
