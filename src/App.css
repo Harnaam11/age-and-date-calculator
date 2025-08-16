@@ -40,3 +40,18 @@
 .content {
   margin-top: 20px;
 }
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* centers vertically */
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column; /* stack cards vertically */
+  align-items: center;
+  gap: 20px; /* spacing between cards */
+}
