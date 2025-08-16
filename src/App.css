@@ -1,53 +1,42 @@
-/* General app container */
-.app-container {
+.app {
   text-align: center;
   font-family: Arial, sans-serif;
-  padding: 20px;
+  padding: 30px;
+  background: linear-gradient(to right, #f9f9f9, #e9e9e9);
   min-height: 100vh;
-  background: linear-gradient(135deg, #89f7fe, #66a6ff);
 }
 
-/* Title */
-.title {
-  font-size: 2.2rem;
+.app-title {
+  font-size: 2.5rem;
   margin-bottom: 20px;
   color: #333;
 }
 
-/* Tab buttons container */
-.tab-buttons {
+.button-container {
   margin-bottom: 20px;
 }
 
-/* Buttons */
-.tab-buttons button {
-  padding: 12px 20px;
-  margin: 0 10px;
+.toggle-btn {
+  background-color: #4CAF50;
   border: none;
-  border-radius: 8px;
-  background-color: #4cafef;
   color: white;
-  font-size: 1rem;
+  padding: 12px 24px;
+  margin: 0 10px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 16px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.tab-buttons button:hover {
-  background-color: #357ec7;
+.toggle-btn:hover {
+  background-color: #45a049;
   transform: scale(1.05);
 }
 
-/* Active tab */
-.tab-buttons button.active {
-  background-color: #2b65ec;
+.toggle-btn.active {
+  background-color: #2e7d32;
 }
 
-/* Content area */
-.tab-content {
-  margin-top: 30px;
-  padding: 20px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+.content {
+  margin-top: 20px;
 }
