@@ -7,14 +7,27 @@ function AgeCalculator() {
 
   const calculateAge = () => {
     if (!dob) return;
+    const today = new Date();
     const birthDate = new Date(dob);
-    const now = new Date();
-    let years = now.getFullYear() - birthDate.getFullYear();
-    const m = now.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && now.getDate() < birthDate.getDate())) {
-      years--;
+
+    let years = today.getFullYear() - birthDate.getFullYear();
+    let months = today.getMonth() - birthDate.getMonth();
+    let days = today.getDate() - birthDate.getDate();
+
+    // Adjust if days are negative
+    if (days < 0) {
+      months--;
+      const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+      days += prevMonth.getDate();
     }
-    setAge(`${years} year(s) old`);
+
+    // Adjust if months are negative
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    setAge(`${years} year(s), ${months} month(s), and ${days} day(s) old`);
   };
 
   const reset = () => {
@@ -24,7 +37,13 @@ function AgeCalculator() {
 
   return (
     <div className="card" style={{ backgroundColor: '#ffe6f0' }}>
-      <h2 style={{ color: 'black', marginBottom: '10px' }}><FaBirthdayCake /> Age Calculator</h2>
+      <h1 style={{ color: 'black', marginBottom: '10px' }}>
+        <FaBirthdayCake /> Free Online Age Calculator
+      </h1>
+      <p style={{ color: 'black' }}>
+        Enter your birth date to instantly calculate your age in years, months, and days.
+      </p>
+
       <input 
         type="date" 
         value={dob} 
