@@ -23,19 +23,15 @@ function DateDifference() {
 
   return (
     <div className="card" style={{ backgroundColor: '#e0f7ff' }}>
-      <h2 style={{ color: 'black' }}><FaCalendarAlt /> Date Difference Calculator</h2>
-      <p style={{ color: 'black' }}>Enter two dates to find the difference in days.</p>
+      <h1 style={{ color: 'black' }}>
+        <FaCalendarAlt /> Date Difference Calculator
+      </h1>
+      <p style={{ color: 'black' }}>
+        Find out the number of days between two dates using this free online tool.
+      </p>
 
-      <input 
-        type="date" 
-        value={date1} 
-        onChange={e => setDate1(e.target.value)} 
-      />
-      <input 
-        type="date" 
-        value={date2} 
-        onChange={e => setDate2(e.target.value)} 
-      />
+      <input type="date" value={date1} onChange={e => setDate1(e.target.value)} />
+      <input type="date" value={date2} onChange={e => setDate2(e.target.value)} />
 
       <div>
         <button onClick={calculateDifference}>Calculate</button>
