@@ -14,12 +14,7 @@ const CountdownTimer = () => {
 
       if (distance <= 0) {
         clearInterval(interval);
-        setTimeLeft({
-          days: 0,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
-        });
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       } else {
         setTimeLeft({
           days: Math.floor(distance / (1000 * 60 * 60 * 24)),
@@ -36,8 +31,8 @@ const CountdownTimer = () => {
   return (
     <Card className="w-full max-w-md mx-auto p-4 shadow-lg">
       <CardContent className="text-center space-y-4">
-        {/* Title inside the box */}
-        <h2 className="text-xl font-bold">Countdown Timer</h2>
+        <h1 className="text-xl font-bold">Countdown Timer – Free Online Tool</h1>
+        <p>Enter a date and time to start a countdown instantly.</p>
 
         <input
           type="datetime-local"
