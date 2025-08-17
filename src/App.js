@@ -37,4 +37,8 @@ function App() {
         {activeComponent === "countdown" && <CountdownTimer />}
         {activeComponent === "difference" && <DateDifference />}
       </div>
-    </
+    </div>
+  );
+}
+
+export default App;
