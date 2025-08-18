@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "./ui/card"; // fixed relative path
 
 const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({});
