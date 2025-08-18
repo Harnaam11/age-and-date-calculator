@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import AgeCalculator from "./AgeCalculator";
-import CountdownTimer from "./CountdownTimer";
-import DateDifference from "./DateDifference";
+import AgeCalculator from "./components/AgeCalculator";
+import CountdownTimer from "./components/CountdownTimer";
+import DateDifference from "./components/DateDifference";
 import "./App.css";
 
 function App() {
