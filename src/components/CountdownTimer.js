@@ -1,5 +1,6 @@
+// CountdownTimer.js
 import React, { useState, useEffect } from "react";
-import { Card, CardContent } from "./ui/card"; // fixed relative path
+import { FaHourglassHalf } from "react-icons/fa";
 
 const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({});
@@ -28,25 +29,35 @@ const CountdownTimer = () => {
     return () => clearInterval(interval);
   }, [targetDate]);
 
+  const reset = () => {
+    setTargetDate("");
+    setTimeLeft({});
+  };
+
   return (
-    <Card className="w-full max-w-md mx-auto p-4 shadow-lg">
-      <CardContent className="text-center space-y-4">
-        <h1 className="text-xl font-bold">Countdown Timer – Free Online Tool</h1>
-        <p>Enter a date and time to start a countdown instantly.</p>
+    <div className="card" style={{ backgroundColor: "#fffbe6" }}>
+      <h1>
+        <FaHourglassHalf /> Countdown Timer
+      </h1>
+      <p>Enter a date and time to start a countdown instantly.</p>
 
-        <input
-          type="datetime-local"
-          onChange={(e) => setTargetDate(e.target.value)}
-          className="border p-2 rounded w-full"
-        />
+      <input
+        type="datetime-local"
+        value={targetDate}
+        onChange={(e) => setTargetDate(e.target.value)}
+        style={{ display: "block", margin: "10px auto", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
+      />
 
-        {targetDate && (
-          <div className="text-lg font-mono">
-            {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-          </div>
-        )}
-      </CardContent>
-    </Card>
+      <div>
+        <button onClick={reset} className="btn">Reset</button>
+      </div>
+
+      {targetDate && (
+        <p style={{ marginTop: "10px", fontWeight: "bold" }}>
+          {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+        </p>
+      )}
+    </div>
   );
 };
 
