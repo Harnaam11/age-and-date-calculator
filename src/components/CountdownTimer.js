@@ -1,59 +1,59 @@
-// CountdownTimer.js
 import React, { useState, useEffect } from "react";
-import { FaHourglassHalf } from "react-icons/fa";
 
 const CountdownTimer = () => {
-  const [timeLeft, setTimeLeft] = useState({});
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [targetDate, setTargetDate] = useState("");
 
   useEffect(() => {
     if (!targetDate) return;
 
-    const interval = setInterval(() => {
+    const tick = () => {
       const now = new Date().getTime();
       const distance = new Date(targetDate).getTime() - now;
 
       if (distance <= 0) {
-        clearInterval(interval);
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      } else {
-        setTimeLeft({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000),
-        });
+        return;
       }
-    }, 1000);
 
+      setTimeLeft({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000),
+      });
+    };
+
+    tick();
+    const interval = setInterval(tick, 1000);
     return () => clearInterval(interval);
   }, [targetDate]);
 
   const reset = () => {
     setTargetDate("");
-    setTimeLeft({});
+    setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   };
 
   return (
-    <div className="card" style={{ backgroundColor: "#fffbe6" }}>
-      <h1>
-        <FaHourglassHalf /> Countdown Timer
-      </h1>
-      <p>Enter a date and time to start a countdown instantly.</p>
+    <div className="card" style={{ backgroundColor: "#ffffff" }}>
+      <h2 style={{ color: "black", marginBottom: "10px" }}>⏳ Countdown Timer</h2>
+      <p style={{ color: "black" }}>Select a date and time to start an instant countdown.</p>
 
       <input
         type="datetime-local"
         value={targetDate}
         onChange={(e) => setTargetDate(e.target.value)}
-        style={{ display: "block", margin: "10px auto", padding: "8px", borderRadius: "5px", border: "1px solid #ccc" }}
       />
 
-      <div>
-        <button onClick={reset} className="btn">Reset</button>
+      <div style={{ marginTop: "10px" }}>
+        <button className="btn">Start</button>
+        <button className="btn secondary" onClick={reset} style={{ marginLeft: "10px" }}>
+          Reset
+        </button>
       </div>
 
       {targetDate && (
-        <p style={{ marginTop: "10px", fontWeight: "bold" }}>
+        <p style={{ marginTop: "12px", fontWeight: "bold", fontFamily: "monospace" }}>
           {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
         </p>
       )}
