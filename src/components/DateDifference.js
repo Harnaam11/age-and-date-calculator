@@ -23,22 +23,22 @@ function DateDifference() {
 
   return (
     <div className="card" style={{ backgroundColor: '#e0f7ff' }}>
-      <h1 style={{ color: 'black' }}>
+      <h2 style={{ color: 'black' }}>
         <FaCalendarAlt /> Date Difference Calculator
-      </h1>
+      </h2>
       <p style={{ color: 'black' }}>
-        Find out the number of days between two dates using this free online tool.
+        Find the number of days between two dates in seconds.
       </p>
 
       <input type="date" value={date1} onChange={e => setDate1(e.target.value)} />
       <input type="date" value={date2} onChange={e => setDate2(e.target.value)} />
 
-      <div>
-        <button onClick={calculateDifference}>Calculate</button>
-        <button onClick={reset} style={{ marginLeft: '10px' }}>Reset</button>
+      <div style={{ marginTop: '8px' }}>
+        <button className="btn" onClick={calculateDifference}>Calculate</button>
+        <button className="btn secondary" onClick={reset} style={{ marginLeft: '10px' }}>Reset</button>
       </div>
 
-      {difference && <p><strong>Difference:</strong> {difference}</p>}
+      {difference && <p style={{ marginTop: '10px' }}><strong>Difference:</strong> {difference}</p>}
     </div>
   );
 }
