@@ -1,99 +1,53 @@
-/* Reset and base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  background: #fefefe;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.app {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 30px;
+  background: linear-gradient(to right, #fdfbfb, #ebedee);
   min-height: 100vh;
 }
 
-/* Container */
-.app {
-  text-align: center;
-  padding: 2rem;
-}
-
-/* Heading */
-.app h1 {
+.app-title {
   font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #444;
+  margin-bottom: 30px;
+  color: #333;
 }
 
-/* Card container */
-.cards {
+.content {
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  flex-direction: column; /* stack cards */
+  align-items: center;
+  gap: 30px;
 }
 
-/* Each card */
+/* Card style */
 .card {
-  background: white;
-  border-radius: 20px;
-  padding: 2rem 1.5rem;
-  width: 250px;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-.card:hover {
-  transform: translateY(-8px);
+.card h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
-/* Icon at top */
-.card .icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-/* Title */
-.card h2 {
-  font-size: 1.3rem;
-  margin-bottom: 0.75rem;
-}
-
-/* Description */
-.card p {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 1.2rem;
-}
-
-/* Cute button */
-.card button {
-  background: #fff;
-  border: 2px solid #333;
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-  font-weight: 600;
+/* Buttons */
+.btn {
+  background-color: #4cafef;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  font-size: 14px;
+  transition: 0.3s ease;
 }
 
-.card button:hover {
-  background: #333;
-  color: #fff;
-}
-
-/* Colors for cards */
-.card.pink {
-  background: #ffe6f1;
-}
-
-.card.blue {
-  background: #e6f4ff;
-}
-
-.card.white {
-  background: #ffffff;
+.btn:hover {
+  background-color: #3a9bdc;
+  transform: scale(1.05);
 }
