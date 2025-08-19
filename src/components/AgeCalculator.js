@@ -1,62 +1,64 @@
-import React, { useState } from 'react';
-import { FaBirthdayCake } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
 
-function AgeCalculator() {
-  const [dob, setDob] = useState('');
-  const [age, setAge] = useState('');
+const CountdownTimer = () => {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [targetDate, setTargetDate] = useState("");
 
-  const calculateAge = () => {
-    if (!dob) return;
-    const today = new Date();
-    const birthDate = new Date(dob);
+  useEffect(() => {
+    if (!targetDate) return;
 
-    let years = today.getFullYear() - birthDate.getFullYear();
-    let months = today.getMonth() - birthDate.getMonth();
-    let days = today.getDate() - birthDate.getDate();
+    const tick = () => {
+      const now = new Date().getTime();
+      const distance = new Date(targetDate).getTime() - now;
 
-    // Adjust if days are negative
-    if (days < 0) {
-      months--;
-      const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
-      days += prevMonth.getDate();
-    }
+      if (distance <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
 
-    // Adjust if months are negative
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
+      setTimeLeft({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000),
+      });
+    };
 
-    setAge(`${years} year(s), ${months} month(s), and ${days} day(s) old`);
-  };
+    tick();
+    const interval = setInterval(tick, 1000);
+    return () => clearInterval(interval);
+  }, [targetDate]);
 
   const reset = () => {
-    setDob('');
-    setAge('');
+    setTargetDate("");
+    setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   };
 
   return (
-    <div className="card" style={{ backgroundColor: '#ffe6f0' }}>
-      <h1 style={{ color: 'black', marginBottom: '10px' }}>
-        <FaBirthdayCake /> Free Online Age Calculator
-      </h1>
-      <p style={{ color: 'black' }}>
-        Enter your birth date to instantly calculate your age in years, months, and days.
-      </p>
+    <div className="card" style={{ backgroundColor: "#ffffff" }}>
+      <h2 style={{ color: "black", marginBottom: "10px" }}>⏳ Countdown Timer</h2>
+      <p style={{ color: "black" }}>Select a date and time to start an instant countdown.</p>
 
-      <input 
-        type="date" 
-        value={dob} 
-        onChange={e => setDob(e.target.value)} 
-        style={{ display: 'block', margin: '10px auto', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}
+      <input
+        type="datetime-local"
+        value={targetDate}
+        onChange={(e) => setTargetDate(e.target.value)}
       />
-      <div>
-        <button onClick={calculateAge} className="btn">Calculate</button>
-        <button onClick={reset} style={{ marginLeft: '10px' }} className="btn">Reset</button>
+
+      <div style={{ marginTop: "10px" }}>
+        <button className="btn">Start</button>
+        <button className="btn secondary" onClick={reset} style={{ marginLeft: "10px" }}>
+          Reset
+        </button>
       </div>
-      <p style={{ marginTop: '10px', fontWeight: 'bold' }}>{age}</p>
+
+      {targetDate && (
+        <p style={{ marginTop: "12px", fontWeight: "bold", fontFamily: "monospace" }}>
+          {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+        </p>
+      )}
     </div>
   );
-}
+};
 
-export default AgeCalculator;
+export default CountdownTimer;
