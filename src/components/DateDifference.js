@@ -10,6 +10,7 @@ function DateDifference() {
     if (!date1 || !date2) return;
     const d1 = new Date(date1);
     const d2 = new Date(date2);
+
     const diffTime = Math.abs(d2 - d1);
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     setDifference(`${diffDays} day(s)`);
@@ -27,21 +28,18 @@ function DateDifference() {
         <FaCalendarAlt /> Date Difference Calculator
       </h2>
       <p style={{ color: 'black' }}>
-        Enter two dates in format YYYY-MM-DD to calculate difference.
+        Enter two dates manually or pick from the calendar:
       </p>
 
-      <input 
-        type="text" 
-        placeholder="YYYY-MM-DD"
-        value={date1} 
-        onChange={e => setDate1(e.target.value)} 
+      <input
+        type="date"
+        value={date1}
+        onChange={e => setDate1(e.target.value)}
       />
-
-      <input 
-        type="text" 
-        placeholder="YYYY-MM-DD"
-        value={date2} 
-        onChange={e => setDate2(e.target.value)} 
+      <input
+        type="date"
+        value={date2}
+        onChange={e => setDate2(e.target.value)}
       />
 
       <div style={{ marginTop: '8px' }}>
