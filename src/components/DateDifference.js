@@ -27,11 +27,22 @@ function DateDifference() {
         <FaCalendarAlt /> Date Difference Calculator
       </h2>
       <p style={{ color: 'black' }}>
-        Find the number of days between two dates in seconds.
+        Enter two dates in format YYYY-MM-DD to calculate difference.
       </p>
 
-      <input type="date" value={date1} onChange={e => setDate1(e.target.value)} />
-      <input type="date" value={date2} onChange={e => setDate2(e.target.value)} />
+      <input 
+        type="text" 
+        placeholder="YYYY-MM-DD"
+        value={date1} 
+        onChange={e => setDate1(e.target.value)} 
+      />
+
+      <input 
+        type="text" 
+        placeholder="YYYY-MM-DD"
+        value={date2} 
+        onChange={e => setDate2(e.target.value)} 
+      />
 
       <div style={{ marginTop: '8px' }}>
         <button className="btn" onClick={calculateDifference}>Calculate</button>
