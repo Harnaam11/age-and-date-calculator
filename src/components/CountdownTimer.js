@@ -37,10 +37,11 @@ const CountdownTimer = () => {
   return (
     <div className="card" style={{ backgroundColor: "#ffffff" }}>
       <h2 style={{ color: "black", marginBottom: "10px" }}>⏳ Countdown Timer</h2>
-      <p style={{ color: "black" }}>Select a date and time to start an instant countdown.</p>
+      <p style={{ color: "black" }}>Enter a date and time (YYYY-MM-DD HH:MM) to start countdown.</p>
 
       <input
-        type="datetime-local"
+        type="text"
+        placeholder="YYYY-MM-DD HH:MM"
         value={targetDate}
         onChange={(e) => setTargetDate(e.target.value)}
       />
