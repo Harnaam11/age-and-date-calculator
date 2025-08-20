@@ -7,20 +7,18 @@ function AgeCalculator() {
 
   const calculateAge = () => {
     if (!dob) return;
-    const today = new Date();
     const birthDate = new Date(dob);
+    const today = new Date();
 
     let years = today.getFullYear() - birthDate.getFullYear();
     let months = today.getMonth() - birthDate.getMonth();
     let days = today.getDate() - birthDate.getDate();
 
-    // Adjust if days are negative
     if (days < 0) {
       months--;
       const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
       days += prevMonth.getDate();
     }
-    // Adjust if months are negative
     if (months < 0) {
       years--;
       months += 12;
@@ -40,25 +38,24 @@ function AgeCalculator() {
         <FaBirthdayCake /> Age Calculator
       </h2>
       <p style={{ color: 'black' }}>
-        Enter your birth date to calculate your exact age in years, months, and days.
+        Enter your birth date manually or pick from the calendar:
       </p>
 
-      {/* Keep type='date' if you like the picker. 
-         If you want manual typing on mobile, change type to 'text' and add placeholder 'YYYY-MM-DD'. */}
       <input
         type="date"
         value={dob}
-        onChange={(e) => setDob(e.target.value)}
+        onChange={e => setDob(e.target.value)}
+        placeholder="YYYY-MM-DD"
       />
 
-      <div>
+      <div style={{ marginTop: '10px' }}>
         <button onClick={calculateAge} className="btn">Calculate</button>
         <button onClick={reset} className="btn secondary" style={{ marginLeft: '10px' }}>
           Reset
         </button>
       </div>
 
-      <p style={{ marginTop: '10px', fontWeight: 'bold' }}>{age}</p>
+      {age && <p style={{ marginTop: '10px', fontWeight: 'bold' }}>{age}</p>}
     </div>
   );
 }
