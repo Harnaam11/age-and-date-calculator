@@ -5,8 +5,20 @@ function AgeCalculator() {
   const [dob, setDob] = useState('');
   const [age, setAge] = useState('');
 
+  const isValidDate = (dateString) => {
+    // Check format YYYY-MM-DD
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!regex.test(dateString)) return false;
+    const date = new Date(dateString);
+    return !isNaN(date.getTime());
+  };
+
   const calculateAge = () => {
-    if (!dob) return;
+    if (!dob || !isValidDate(dob)) {
+      setAge("❌ Please enter a valid date in YYYY-MM-DD format");
+      return;
+    }
+
     const today = new Date();
     const birthDate = new Date(dob);
 
@@ -33,28 +45,4 @@ function AgeCalculator() {
   };
 
   return (
-    <div className="card" style={{ backgroundColor: '#ffe6f0' }}>
-      <h2 style={{ color: 'black', marginBottom: '10px' }}>
-        <FaBirthdayCake /> Age Calculator
-      </h2>
-      <p style={{ color: 'black' }}>
-        Enter your birth date to calculate your exact age in years, months, and days.
-      </p>
-
-      <input
-        type="date"
-        value={dob}
-        onChange={e => setDob(e.target.value)}
-      />
-
-      <div>
-        <button onClick={calculateAge} className="btn">Calculate</button>
-        <button onClick={reset} className="btn secondary" style={{ marginLeft: '10px' }}>Reset</button>
-      </div>
-
-      <p style={{ marginTop: '10px', fontWeight: 'bold' }}>{age}</p>
-    </div>
-  );
-}
-
-export default AgeCalculator;
+    <div className="card" style={{ backgroundColor: '#ffe6f0'
